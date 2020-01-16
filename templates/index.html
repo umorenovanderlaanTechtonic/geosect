@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GeoSect</title>
+    </head>
+    <body>
+        <h1>Enter your Polygons</h1>
+        <form action="/geosect" method="post">
+          <input type="text" name="coord1"><br>
+          <input type="text" name="coord2"><br>
+          <input type="submit">
+        </form>
+        <div id='result'></div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("form").submit(function(event) {
+            one = $('form [name="coord1"').val();
+            two = $('form [name="coord2"').val()
+            postData = {
+                coord1: one,
+                coord2: two
+            }
+            $.ajax({
+                data: JSON.stringify(postData),
+                type : 'POST',
+                url : '/geosect',
+                contentType : 'application/json'
+            })
+            .done(function(data){
+                $('#result').text(data);
+            })
+            event.preventDefault();
+        });
+    </script>
+</html>

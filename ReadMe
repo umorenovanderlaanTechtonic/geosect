@@ -1,1 +1,1 @@
-To get started with the project, please run python -m SimpleHTTPServer in this project's folder in your terminal. This should start the web service on the 8000 port of local host
+To get started, make sure you have flask installed on your machine. Clone this repo, and then navigate to the project folder. Run the server.py file. This should start things in a local port, usually 5000. Visit localhost at that port, and submit two valid geojson objects to see if they intersect or not. 

@@ -18,8 +18,8 @@
             one = $('form [name="coord1"').val();
             two = $('form [name="coord2"').val()
             postData = {
-                coord1: one,
-                coord2: two
+                coord1: JSON.parse(one),
+                coord2: JSON.parse(two)
             }
             $.ajax({
                 data: JSON.stringify(postData),

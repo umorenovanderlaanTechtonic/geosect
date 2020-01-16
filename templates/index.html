@@ -17,19 +17,23 @@
         $("form").submit(function(event) {
             one = $('form [name="coord1"').val();
             two = $('form [name="coord2"').val()
-            postData = {
-                coord1: JSON.parse(one),
-                coord2: JSON.parse(two)
+            try {
+                postData = {
+                    coord1: JSON.parse(one),
+                    coord2: JSON.parse(two)
+                }
+                $.ajax({
+                    data: JSON.stringify(postData),
+                    type : 'POST',
+                    url : '/geosect',
+                    contentType : 'application/json',
+                })
+                .done(function(data){
+                    $('#result').text(data);
+                })
+            } catch (err) {
+                $('#result').text('Please submit valid json');
             }
-            $.ajax({
-                data: JSON.stringify(postData),
-                type : 'POST',
-                url : '/geosect',
-                contentType : 'application/json'
-            })
-            .done(function(data){
-                $('#result').text(data);
-            })
             event.preventDefault();
         });
     </script>

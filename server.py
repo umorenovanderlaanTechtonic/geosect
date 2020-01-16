@@ -34,7 +34,7 @@ def geosect():
         else:
             response = 'These polygons do not intersect.'
     except:
-        return redirect('/')
+        response = 'Please use a valid geojson object'
     return response
 
 if __name__ == '__main__':
